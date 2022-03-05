@@ -44,3 +44,15 @@
 
 ### belum fix
 1. password
+
+
+###Link
+-halaman login:
+https://demos.creative-tim.com/material-kit/pages/sign-in.html
+https://mdbootstrap.com/docs/b4/jquery/components/demo/
+
+-halaman pilih room yg ada:
+https://mdbootstrap.com/support/
+
+-room chatbox:
+https://demos.creative-tim.com/material-kit/pages/contact-us.html
