@@ -129,3 +129,26 @@ ul {
 #messages > li:nth-child(odd) {
   background: #8fd0e4;
 }
+
+.whiteboard {
+  height: 350px;
+  width: 900px;
+  position: relative;
+  border: 5px solid #8fd0e4;
+}
+
+.colors {
+  position: relative;
+}
+
+.color {
+  display: inline-block;
+  height: 48px;
+  width: 48px;
+}
+
+.color.black { background-color: black; }
+.color.red { background-color: red; }
+.color.green { background-color: green; }
+.color.blue { background-color: blue; }
+.color.yellow { background-color: yellow; }
