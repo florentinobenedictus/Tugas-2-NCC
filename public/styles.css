@@ -48,7 +48,7 @@ ul {
   width: 900px;
   border: 3px solid #1a96bc;
   padding: 10px;
-  height: 600px;
+  height: 200px;
   overflow: auto;
   margin-left: 100px;
   margin-right: 100px;
@@ -62,6 +62,7 @@ ul {
   padding: 10px;
   height: 600px;
   overflow: auto;
+  margin-left:60px;
 }
 
 .users {
@@ -132,9 +133,9 @@ ul {
 
 .whiteboard {
   height: 350px;
-  width: 900px;
+  width: 915px;
   position: relative;
-  border: 5px solid #8fd0e4;
+  border: 5px solid #1a96bc;
 }
 
 .colors {
