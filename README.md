@@ -1,3 +1,8 @@
+# Run
+* npm init
+* npm install socket.io socket.io-client
+* npm install express@4
+
 # Penugasan
 * Penugasan bersifat kelompok (2 orang, diplotting-kan silahkan cek drive camin)
 * Aplikasi yang dibuat terdapat 2 fitur wajib yaitu live chat dan shared whiteboard (https://socket.io/demos/whiteboard)

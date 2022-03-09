@@ -1,15 +1,20 @@
-let userName = prompt('Masukkan nama');
-let room = prompt('Masukkan nama room');
+const userlogin = document.getElementById('username');
+const roomname = document.getElementById('room');
+const userlist = document.getElementById('user');
+const roomlist = document.getElementById('room-a');
+const messages = document.getElementById('messages');
+const form = document.getElementById('form');
+const input = document.getElementById('input');
+
+const { userName, room } = Qs.parse(location.search, {
+  ignoreQueryPrefix: true,
+});
+userlogin.value = userName
 let ID = '';
-var socket = io();
-var roomname = document.getElementById('room');
-var userlist = document.getElementById('user');
-var roomlist = document.getElementById('room-a');
+const socket = io();
+
 roomname.textContent += room;
-socket.emit('join room', { username: userName, roomName: room });
-var messages = document.getElementById('messages');
-var form = document.getElementById('form');
-var input = document.getElementById('input');
+socket.emit('join room', { username: userName, roomname: room });
 
 
 //import

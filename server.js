@@ -3,6 +3,8 @@ const express = require('express');
 const server = require('http').createServer(app);
 const port = process.env.PORT || 3000;
 const io = require('socket.io')(server);
+const path = require('path');
+
 
 const {
   joinUser,
@@ -12,18 +14,13 @@ const {
   getAllRooms,
 } = require('./public/users.js');
 
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/public/index.html');
-});
-app.use(express.static(__dirname + '/public'));
-server.listen(3000, () => {
-  console.log(`Server running at http://127.0.0.1:${port}/`);
-});
+// Set static folder
+app.use(express.static(path.join(__dirname, 'public')));
 
 let thisRoom = '';
 io.on('connection', (socket) => {
   socket.on('join room', (data) => {
-    let Newuser = joinUser(socket.id, data.username, data.roomName);
+    let Newuser = joinUser(socket.id, data.username, data.roomname);
     socket.emit('send data', {
       id: socket.id,
       username: Newuser.username,
@@ -55,4 +52,8 @@ io.on('connection', (socket) => {
     let allusers = getAllRooms();
     io.emit('all rooms', allusers);
   });
+});
+
+server.listen(port, () => {
+  console.log(`Server running at http://127.0.0.1:${port}/`);
 });
