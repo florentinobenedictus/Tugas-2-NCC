@@ -114,8 +114,17 @@ for (var i = 0; i < colors.length; i++){
 
   // make the canvas fill its parent
   function onResize() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    //original
+	  //canvas.width = window.innerWidth;
+    //canvas.height = window.innerHeight;
+	
+	  //90%
+	  //canvas.width = 888;
+    //canvas.height = 575;
+	
+	  //use flexratio
+	  canvas.width = window.innerWidth * 0.584595128;
+    canvas.height = canvas.width * 0.647522522;
   }
 //import
 
