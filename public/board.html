@@ -93,9 +93,9 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-lg-8 d-lg-flex d-none h-100 my-0 pe-0 top-0 start-0 position-relative text-center justify-content-center flex-column">
+          <div class="col-lg-8 d-lg-flex h-100 my-0 pe-0 top-0 start-0 position-relative text-center justify-content-center flex-column">
             <div class="position-relative m-3 border-radius-lg d-flex flex-column justify-content-center" style="background-image: url('../assets/img/illustrations/illustration-signin.jpg'); background-size: cover;  height: 100%;" loading="lazy">
-              <canvas class="whiteboard position-relative m-3 border-radius-lg d-flex flex-column justify-content-center"></canvas>
+              <canvas class="whiteboard m-3" id="canvas"></canvas>
             </div>
             <div class="position-relative m-3 mt-0 border-radius-lg d-flex flex-column justify-content-center" style="height: 30% !important;" loading="lazy">
               <div class="col-xl-12 col-lg-12 col-md-12 d-flex flex-column">
@@ -121,36 +121,7 @@
               </div>
             </div>
           </div>
-          <div class="col-12 d-lg-none d-flex h-100 my-auto pe-0 top-0 start-0 position-relative text-center justify-content-center flex-column">
-            <div class="position-relative m-3 border-radius-lg d-flex flex-column justify-content-center" style="background-image: url('../assets/img/illustrations/illustration-signin.jpg'); background-size: cover;  height: 100%;" loading="lazy">
-              <canvas class="whiteboard position-relative m-3 border-radius-lg d-flex flex-column justify-content-center"></canvas>
-            </div>
-
-            <div class="position-relative m-3 mt-0 border-radius-lg d-flex flex-column justify-content-center" style="height: 30% !important;" loading="lazy">
-              <div class="col-xl-12 col-lg-12 col-md-12 d-flex flex-column">
-                <div class="card d-flex blur justify-content-center shadow-lg my-sm-0 my-sm-4 mt-8 mb-5">
-                  <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
-                    <div class="bg-gradient-primary shadow-primary border-radius-lg p-3">
-                      <h6 class="text-white text-primary mb-0">Tools</h6>
-                    </div>
-                  </div>
-                  <div class="card-body">
-                    <div class="card-body p-0 my-3 mt-0">
-                      <div class="colors">
-                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-                        <div class="color black"></div>
-                        <div class="color red"></div>
-                        <div class="color green"></div>
-                        <div class="color blue"></div>
-                        <div class="color yellow"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-4 col-lg-4 mt-3 d-flex flex-column ms-0 ">
+          <div class="col-xl-4 col-lg-4 mt-3 d-flex flex-column ms-0 " id="canvasBack">
             <div class="card d-flex blur justify-content-center shadow-lg my-sm-4 mt-8 mb-5">
               <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
                 <div class="bg-gradient-primary shadow-primary border-radius-lg p-3 roomname">

@@ -20,14 +20,15 @@ socket.emit('join room', { username: userName, roomname: room, typeroom: typeRoo
 
 
 //import
-var canvas = document.getElementsByClassName('whiteboard')[0];
-var colors = document.getElementsByClassName('color');
-var context = canvas.getContext('2d');
+let canvas = document.getElementsByClassName('whiteboard')[0];
+let colors = document.getElementsByClassName('color');
+let canvasBack = document.getElementById('canvasBack');
+let context = canvas.getContext('2d');
 
- var current = {
+let current = {
     color: 'black'
   };
-  var drawing = false;
+  let drawing = false;
 
   canvas.addEventListener('mousedown', onMouseDown, false);
   canvas.addEventListener('mouseup', onMouseUp, false);
@@ -60,8 +61,8 @@ for (var i = 0; i < colors.length; i++){
     context.closePath();
 
     if (!emit) { return; }
-    var w = canvas.width;
-    var h = canvas.height;
+    let w = canvas.width;
+    let h = canvas.height;
 
     socket.emit('drawing', {
       x0: x0 / w,
@@ -72,11 +73,11 @@ for (var i = 0; i < colors.length; i++){
     });
   }
 
-  function onMouseDown(e){
+  function onMouseDown (e) {
     drawing = true;
     current.x = e.clientX||e.touches[0].clientX;
     current.y = e.clientY||e.touches[0].clientY;
-  }
+  };
 
   function onMouseUp(e){
     if (!drawing) { return; }
@@ -97,9 +98,9 @@ for (var i = 0; i < colors.length; i++){
 
   // limit the number of events per second
   function throttle(callback, delay) {
-    var previousCall = new Date().getTime();
+    let previousCall = new Date().getTime();
     return function() {
-      var time = new Date().getTime();
+      let time = new Date().getTime();
 
       if ((time - previousCall) >= delay) {
         previousCall = time;
@@ -109,8 +110,8 @@ for (var i = 0; i < colors.length; i++){
   }
 
   function onDrawingEvent(data){
-    var w = canvas.width;
-    var h = canvas.height;
+    let w = canvas.width;
+    let h = canvas.height;
     drawLine(data.x0 * w, data.y0 * h, data.x1 * w, data.y1 * h, data.color);
   }
 
@@ -125,10 +126,16 @@ for (var i = 0; i < colors.length; i++){
     //canvas.height = 575;
 	
 	  //use flexratio
-	  canvas.width = window.innerWidth * 0.584595128;
-    canvas.height = canvas.width * 0.647522522;
+    canvas.width = window.innerWidth * 0.771695128;
+    canvas.height = canvas.width * 0.605522522;
   }
 //import
+
+// let canvas = document.getElementById("canvas");
+
+// canvas.width = window.innerWidth;
+// canvas.height = window.innerHeight;
+
 
 socket.on('send data', (data) => {
   ID = data.id;
