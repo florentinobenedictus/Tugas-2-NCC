@@ -20,11 +20,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 let thisRoom = '';
 io.on('connection', (socket) => {
   socket.on('join room', (data) => {
-    let Newuser = joinUser(socket.id, data.username, data.roomname);
+    let Newuser = joinUser(socket.id, data.username, data.roomname, data.typeroom);
     socket.emit('send data', {
       id: socket.id,
       username: Newuser.username,
       roomname: Newuser.roomname,
+      typeroom: Newuser.typeroom,
     });
     let allUsers = getAllRooms();
     io.emit('all rooms', allUsers);

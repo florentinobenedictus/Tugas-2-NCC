@@ -1,20 +1,22 @@
 const userlogin = document.getElementById('username');
 const roomname = document.getElementById('room');
+const typeroom = document.getElementById('typeRoom')
 const userlist = document.getElementById('user');
 const roomlist = document.getElementById('room-a');
 const messages = document.getElementById('messages');
 const form = document.getElementById('form');
 const input = document.getElementById('input');
 
-const { userName, room } = Qs.parse(location.search, {
+const { userName, room, typeRoom } = Qs.parse(location.search, {
   ignoreQueryPrefix: true,
 });
+typeroom.value = typeRoom
 userlogin.value = userName
 let ID = '';
 const socket = io();
 
 roomname.textContent += room;
-socket.emit('join room', { username: userName, roomname: room });
+socket.emit('join room', { username: userName, roomname: room, typeroom: typeRoom});
 
 
 //import

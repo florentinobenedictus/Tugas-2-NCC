@@ -1,9 +1,10 @@
 let users = [];
-function joinUser(socketId, userName, roomName) {
+function joinUser(socketId, userName, roomName, typeRoom) {
   const user = {
     socketID: socketId,
     username: userName,
     roomname: roomName,
+    typeroom: typeRoom
   };
   users.push(user);
   return user;
@@ -38,7 +39,8 @@ function getAllRooms() {
   let rooms = [];
 
   for (let i = 0; i < users.length; i++) {
-    rooms.push(users[i].roomname);
+    rooms.push(users[i].roomname+" - "+users[i].typeroom);
+    console.log(users[i].roomname+" - "+users[i].typeroom);
   }
 
   return rooms.filter(onlyUnique);
