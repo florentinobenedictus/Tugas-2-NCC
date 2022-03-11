@@ -36,6 +36,7 @@ ul {
 .whiteboard {
   background: white;
   height: 100%;
+  object-fit: none;
 }
 
 .colors {
