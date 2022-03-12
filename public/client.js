@@ -70,7 +70,7 @@ for (var i = 0; i < colors.length; i++){
       x1: x1 / w,
       y1: y1 / h,
       color: color,
-	  user: userName,
+	    user: userName,
       room: room,
       typeRoom: typeroom.value
     });
