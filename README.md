@@ -40,23 +40,25 @@ Jika posisi whiteboard dan mouse tidak sesuai ketika menggunakan device lain/zoo
 canvas.width = window.innerWidth * x;
 canvas.height = canvas.width * y;
 ```
-Dengan:<br>x = width_ideal/width layar<br>y = height_ideal/width_ideal<br><br>
+Dengan:
+* x = width_ideal/width layar
+* y = height_ideal/width_ideal<br>
 Selanjutnya penyesuaian ketika resize akan dilakukan secara otomatis.
 
 ## Fitur
-- Memiliki halaman log in
-- Terdapat tombol untuk pindah room dari room saat ini
+* Memiliki halaman log in
+* Terdapat tombol untuk pindah room dari room saat ini
 
 ### Link Referensi
 #### Bootstrap
--halaman login:
+* halaman login:
 https://demos.creative-tim.com/material-kit/pages/sign-in.html
 https://mdbootstrap.com/docs/b4/jquery/components/demo/
 
--halaman pilih room yg ada:
+* halaman pilih room yg ada:
 https://mdbootstrap.com/support/
 
--room chatbox:
+* room chatbox:
 https://demos.creative-tim.com/material-kit/pages/contact-us.html
 #### Whiteboard dan Chat
 - https://socket.io/demos/whiteboard/
