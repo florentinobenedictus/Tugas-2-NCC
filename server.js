@@ -5,7 +5,6 @@ const port = process.env.PORT || 3000;
 const io = require('socket.io')(server);
 const path = require('path');
 
-
 const {
   joinUser,
   removeUser,
@@ -18,6 +17,22 @@ const {
 app.use(express.static(path.join(__dirname, 'public')));
 
 let thisRoom = '';
+
+io.on('connection', (socket) => {
+  socket.on('chat message', (msg) => {
+    thisRoom = msg.room;
+    io.to(thisRoom).emit('chat message', { msg: msg, id: socket.id });
+  });
+});
+
+io.on('connection', (socket) => {
+  socket.on('drawing', (data) => {
+	//thisRoom = data.room; kalo diuncomment gbs, kalo skrg harus ngechat dulu baru shared (pake thisRoom dari chat)
+    io.to(thisRoom).emit('drawing', data);
+	console.log(data);
+  });
+});
+
 io.on('connection', (socket) => {
   socket.on('join room', (data) => {
     let Newuser = joinUser(socket.id, data.username, data.roomname, data.typeroom);
@@ -33,11 +48,6 @@ io.on('connection', (socket) => {
     socket.join(Newuser.roomname);
     let userlist = getUsers(Newuser.roomname);
     io.to(Newuser.roomname).emit('in room', userlist);
-  });
-
-  socket.on('chat message', (msg) => {
-    thisRoom = msg.room;
-    io.to(thisRoom).emit('chat message', { msg: msg, id: socket.id });
   });
 });
 
