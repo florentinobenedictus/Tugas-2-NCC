@@ -9,6 +9,9 @@ const {
   joinUser,
   removeUser,
   getUsers,
+  getUsersFirst,
+  getAdmin,
+  changeAdmin,
   getUserRoom,
   getAllRooms,
 } = require('./public/users.js');
@@ -22,24 +25,36 @@ io.on('connection', (socket) => {
   socket.on('chat message', (msg) => {
     thisRoom = msg.room;
     io.to(thisRoom).emit('chat message', { msg: msg, id: socket.id });
+	if(msg.value == 'Admin plz')changeAdmin(thisRoom, msg.user);
   });
 });
 
 io.on('connection', (socket) => {
   socket.on('drawing', (data) => {
 	thisRoom = data.room;
-    io.to(thisRoom).emit('drawing', data);
+	//console.log(data.typeRoom)
+    if(data.typeRoom != 'Unshared Whiteboard')io.to(thisRoom).emit('drawing', data);
+	else {
+		//console.log(data.user);
+		//console.log(getUsersFirst(thisRoom));
+		// host unshared whiteboard menggunakan ID yang pertama dibuat:
+		//if(data.user == getUsersFirst(thisRoom).username)io.to(thisRoom).emit('drawing', data);
+		// host unshared whiteboard menggunakan Admin name (dapatkan admin dengan chat "Admin plz")
+		if(getAdmin(data.user, thisRoom))io.to(thisRoom).emit('drawing', data);
+	}
   });
 });
 
+
 io.on('connection', (socket) => {
   socket.on('join room', (data) => {
-    let Newuser = joinUser(socket.id, data.username, data.roomname, data.typeroom);
+    let Newuser = joinUser(socket.id, data.username, data.roomname, data.typeroom, data.adminof);
     socket.emit('send data', {
       id: socket.id,
       username: Newuser.username,
       roomname: Newuser.roomname,
       typeroom: Newuser.typeroom,
+	  adminof : Newuser.adminof
     });
     let allUsers = getAllRooms();
     io.emit('all rooms', allUsers);
