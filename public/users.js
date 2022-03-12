@@ -40,7 +40,6 @@ function getAllRooms() {
 
   for (let i = 0; i < users.length; i++) {
     rooms.push(users[i].roomname+" - "+users[i].typeroom);
-    console.log(users[i].roomname+" - "+users[i].typeroom);
   }
 
   return rooms.filter(onlyUnique);

@@ -149,8 +149,23 @@ socket.on('all rooms', (data) => {
     roomlist.removeChild(roomlist.lastChild);
   }
   for (let i = 0; i < data.length; i++) {
-    var item = document.createElement('li');
-    item.textContent = data[i];
+    
+    // <input class="form-check-input" type="radio" name="radioRoom">
+    // <label class="custom-control-label" for="radioRoom">Toggle this custom radio</label>
+    // <div  class="form-check mb-3">
+    //                         </div>
+    var item= document.createElement('div');
+    item.setAttribute("class","form-check mb-3");
+    var itemA = document.createElement('input');
+    itemA.setAttribute("class","form-check-input");
+    itemA.setAttribute("type","radio");
+    itemA.setAttribute("name","radioRoom")
+    var itemB = document.createElement('label');
+    itemB.setAttribute("class","custom-control-label ms-3");
+    itemB.setAttribute("for","radioRoom");
+    itemB.textContent = data[i];
+    item.appendChild(itemA);
+    item.appendChild(itemB);
     roomlist.appendChild(item);
   }
   window.scrollTo(0, document.body.scrollHeight);
