@@ -24,7 +24,6 @@ let canvas = document.getElementsByClassName('whiteboard')[0];
 let colors = document.getElementsByClassName('color');
 let canvasBack = document.getElementById('canvasBack');
 let context = canvas.getContext('2d');
-
 let current = {
     color: 'black'
   };
@@ -49,7 +48,7 @@ for (var i = 0; i < colors.length; i++){
 
   window.addEventListener('resize', onResize, false);
   onResize();
-
+	
 
   function drawLine(x0, y0, x1, y1, color, emit){
     context.beginPath();
@@ -59,7 +58,7 @@ for (var i = 0; i < colors.length; i++){
     context.lineWidth = 2;
     context.stroke();
     context.closePath();
-
+	
     if (!emit) { return; }
     let w = canvas.width;
     let h = canvas.height;
@@ -69,7 +68,8 @@ for (var i = 0; i < colors.length; i++){
       y0: y0 / h,
       x1: x1 / w,
       y1: y1 / h,
-      color: color
+      color: color,
+      room: room
     });
   }
 
@@ -118,16 +118,18 @@ for (var i = 0; i < colors.length; i++){
   // make the canvas fill its parent
   function onResize() {
     //original
-	  //canvas.width = window.innerWidth;
+	//canvas.width = window.innerWidth;
     //canvas.height = window.innerHeight;
 	
-	  //90%
-	  //canvas.width = 888;
-    //canvas.height = 575;
+	//90%
+	//canvas.width = 1073;
+    //canvas.height = 440;
 	
-	  //use flexratio
+	//use flexratio
     canvas.width = window.innerWidth * 0.771695128;
     canvas.height = canvas.width * 0.605522522;
+	//canvas.width = window.innerWidth * 0.584595128;
+    //canvas.height = canvas.width * 0.647522522;
   }
 //import
 
@@ -184,6 +186,3 @@ socket.on('chat message', function (msg) {
   messages.appendChild(item);
   window.scrollTo(0, document.body.scrollHeight);
 });
-
-
-
