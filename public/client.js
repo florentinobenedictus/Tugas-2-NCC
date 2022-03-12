@@ -6,6 +6,7 @@ const roomlist = document.getElementById('room-a');
 const messages = document.getElementById('messages');
 const form = document.getElementById('form');
 const input = document.getElementById('input');
+const formpindah = document.getElementById('formpindah');
 
 const { userName, room, typeRoom } = Qs.parse(location.search, {
   ignoreQueryPrefix: true,
@@ -16,7 +17,7 @@ let ID = '';
 const socket = io();
 
 roomname.textContent += room;
-socket.emit('join room', { username: userName, roomname: room, typeroom: typeRoom});
+socket.emit('join room', { username: userName, roomname: room, typeroom: typeRoom, adminof: 0});
 
 
 //import
@@ -69,6 +70,7 @@ for (var i = 0; i < colors.length; i++){
       x1: x1 / w,
       y1: y1 / h,
       color: color,
+	  user: userName,
       room: room,
       typeRoom: typeroom.value
     });
@@ -196,9 +198,18 @@ form.addEventListener('submit', function (e) {
 });
 
 socket.on('chat message', function (msg) {
-  var item = document.createElement('li');
-  item.innerHTML =
+  if(msg.msg.value == 'Admin plz'){
+	var item = document.createElement('li');
+	item.innerHTML =
+    '<strong>' + msg.msg.user + '</strong>' + ' has become admin of this room';
+    messages.appendChild(item);
+    window.scrollTo(0, document.body.scrollHeight);
+  }
+  else {
+	var item = document.createElement('li');
+	item.innerHTML =
     '<strong>' + msg.msg.user + '</strong>' + ' : ' + msg.msg.value;
-  messages.appendChild(item);
-  window.scrollTo(0, document.body.scrollHeight);
+    messages.appendChild(item);
+    window.scrollTo(0, document.body.scrollHeight);
+  }
 });
