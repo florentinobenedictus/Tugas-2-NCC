@@ -1,10 +1,11 @@
 let users = [];
-function joinUser(socketId, userName, roomName, typeRoom) {
+function joinUser(socketId, userName, roomName, typeRoom, adminOf) {
   const user = {
     socketID: socketId,
     username: userName,
     roomname: roomName,
-    typeroom: typeRoom
+    typeroom: typeRoom,
+	adminof	: adminOf
   };
   users.push(user);
   return user;
@@ -23,6 +24,26 @@ function getUsers(room) {
   for (let i = 0; i < users.length; i++)
     if (users[i].roomname == room) newUsers.push(users[i]);
   return newUsers;
+}
+
+function getUsersFirst(room) {
+  let newUsers = [];
+  for (let i = 0; i < users.length; i++)
+    if (users[i].roomname == room) newUsers.push(users[i]);
+  return newUsers[0];
+}
+
+function getAdmin(name, room) {
+  for (let i = 0; i < users.length; i++)
+    if ((users[i].username == name) && (users[i].adminof == room)) return true;
+  return false;
+}
+
+function changeAdmin(room, name) {
+  for (let i = 0; i < users.length; i++)
+	if(users[i].adminof == room) users[i].adminof = 0;
+  for (let i = 0; i < users.length; i++)
+	if(users[i].username == name) {users[i].adminof = room;}
 }
 
 function getUserRoom(id) {
@@ -44,4 +65,4 @@ function getAllRooms() {
 
   return rooms.filter(onlyUnique);
 }
-module.exports = { joinUser, removeUser, getUsers, getUserRoom, getAllRooms };
+module.exports = { joinUser, removeUser, getUsers, getUsersFirst, getAdmin, changeAdmin, getUserRoom, getAllRooms };
