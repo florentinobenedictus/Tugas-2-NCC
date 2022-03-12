@@ -47,7 +47,10 @@ Selanjutnya penyesuaian ketika resize akan dilakukan secara otomatis.
 
 ## Fitur
 * Memiliki halaman log in
-* Terdapat tombol untuk pindah room dari room saat ini
+* Mengubah warna yang ingin digunakan
+* Terdapat list room yang tersedia
+* Claim admin
+* ~~Terdapat tombol untuk pindah room dari room saat ini~~
 
 ### Link Referensi
 #### Bootstrap
