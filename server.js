@@ -22,14 +22,15 @@ io.on('connection', (socket) => {
   socket.on('chat message', (msg) => {
     thisRoom = msg.room;
     io.to(thisRoom).emit('chat message', { msg: msg, id: socket.id });
+	console.log(msg.room);
   });
 });
 
 io.on('connection', (socket) => {
   socket.on('drawing', (data) => {
-	//thisRoom = data.room; kalo diuncomment gbs, kalo skrg harus ngechat dulu baru shared (pake thisRoom dari chat)
+	thisRoom = data.room;
     io.to(thisRoom).emit('drawing', data);
-	console.log(data);
+	console.log(data.room);
   });
 });
 
